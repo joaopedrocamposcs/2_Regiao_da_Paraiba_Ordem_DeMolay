@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2ª Região da Paraíba | Ordem DeMolay (GCE-PB / SCDB)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Google Fonts: Inter & Cinzel para títulos institucionais -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+</head>
+<body class="bg-cream text-charcoal antialiased selection:bg-crimson selection:text-gold-light">
+
+  <!-- Barra de Navegação Superior -->
+  <nav class="sticky top-0 z-40 bg-crimson-dark/95 backdrop-blur-md border-b border-gold/30 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Marca / Brasão -->
+        <a href="#" class="flex items-center gap-3 group">
+          <img src="assets/logo-2-regiao.png" alt="Brasão da 2ª Região da Paraíba" class="regional-logo w-10 h-10 rounded-lg border border-gold/60 shadow-md group-hover:scale-105 transition-transform">
+          <div>
+            <span class="font-serif font-bold text-sm sm:text-base tracking-wide text-gold-light block leading-none">2ª REGIÃO DA PARAÍBA</span>
+            <span class="text-[11px] text-gray-300 tracking-wider uppercase">Ordem DeMolay • GCE-PB</span>
+          </div>
+        </a>
+
+        <!-- Links Desktop -->
+        <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <a href="#capitulos" class="text-gray-200 hover:text-gold-light transition-colors">Capítulos</a>
+          <a href="#sobre" class="text-gray-200 hover:text-gold-light transition-colors">A Ordem</a>
+          <a href="#links-oficiais" class="text-gray-200 hover:text-gold-light transition-colors">Links SCDB</a>
+          <a href="#interesse" class="bg-gradient-to-r from-gold to-gold-dark text-crimson-dark font-bold px-4 py-2 rounded-xl shadow hover:brightness-110 transition-all">
+            Quero Participar
+          </a>
+        </div>
+
+        <!-- Botão Mobile -->
+        <div class="md:hidden">
+          <a href="#interesse" class="bg-gold text-crimson-dark text-xs font-bold px-3.5 py-2 rounded-xl shadow">
+            Participar
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. HEADER / HERO SECTION -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-crimson-dark via-crimson to-crimson-dark text-white pt-12 pb-20 sm:pt-20 sm:pb-28 border-b-4 border-gold">
+    <!-- Padrão decorativo sutil de fundo -->
+    <div class="hero-pattern absolute inset-0 opacity-10 pointer-events-none"></div>
+    
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <!-- Badge Gestão -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-gold/40 text-gold-light text-xs sm:text-sm font-semibold tracking-wider uppercase mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-gold-light animate-pulse"></span>
+        Gestão Regional 2026 / 2027
+      </div>
+
+      <!-- Brasão Regional -->
+      <div class="mx-auto w-28 h-40 sm:w-36 sm:h-48 mb-6 transform hover:rotate-1 transition-transform">
+        <img src="assets/logo-2-regiao.png" alt="Brasão da 2ª Região da Paraíba" class="regional-logo w-full h-full rounded-xl">
+      </div>
+
+      <!-- Título Principal -->
+      <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 drop-shadow-sm">
+        2ª Região da <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-light to-gold">Paraíba</span> — Ordem DeMolay
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="max-w-2xl mx-auto text-base sm:text-xl text-gray-200 font-normal leading-relaxed mb-8">
+        <strong class="text-white font-semibold">Grande Conselho Estadual da Paraíba (GCE-PB)</strong> • <strong class="text-white font-semibold">Supremo Conselho DeMolay Brasil (SCDB)</strong> • Gestão 2026/2027
+      </p>
+
+      <!-- Botões de Ação (CTA) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#interesse" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-gold-light via-gold to-gold-dark text-crimson-dark font-bold text-base shadow-xl hover:shadow-gold/20 hover:-translate-y-0.5 transition-all">
+          <span>Quero Conhecer a Ordem</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="https://www.demolaybrasil.org.br" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/15 border border-gold/50 text-gold-light font-semibold text-base transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <span>Buscar no Portal SCDB</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. SEÇÃO INTERATIVA: NOSSOS CAPÍTULOS E ORGANIZAÇÕES AFILIADAS -->
+  <section id="capitulos" class="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-crimson font-bold text-xs uppercase tracking-widest block mb-2">Presença Regional</span>
+      <h2 class="font-serif text-2xl sm:text-4xl font-bold text-crimson-dark mb-4">
+        Nossos Capítulos e Organizações Afiliadas
+      </h2>
+      <p class="text-gray-600 text-sm sm:text-base">
+        Filtre por cidade para localizar os Capítulos DeMolay, Priorado e Castelo de Escudeiros ativos na 2ª Região da Paraíba.
+      </p>
+    </div>
+
+    <!-- Botões de Filtro por Cidade -->
+    <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+      <button type="button" data-city="Todos" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all bg-crimson text-white shadow-md">
+        Todos (6)
+      </button>
+      <button type="button" data-city="Campina Grande" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all bg-white text-charcoal border border-gray-200 hover:border-crimson/40">
+        Campina Grande
+      </button>
+      <button type="button" data-city="Areia" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all bg-white text-charcoal border border-gray-200 hover:border-crimson/40">
+        Areia
+      </button>
+      <button type="button" data-city="Alagoa Grande" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all bg-white text-charcoal border border-gray-200 hover:border-crimson/40">
+        Alagoa Grande
+      </button>
+      <button type="button" data-city="Picuí" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all bg-white text-charcoal border border-gray-200 hover:border-crimson/40">
+        Picuí
+      </button>
+    </div>
+
+    <!-- Grid de Cards das Organizações -->
+    <div id="units-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Os cards serão renderizados dinamicamente via JavaScript para filtragem instantânea -->
+    </div>
+  </section>
+
+  <!-- 3. SEÇÃO: PARA JOVENS, PAIS E O CLUBE DE MÃES E AMIGOS -->
+  <section id="sobre" class="py-16 sm:py-24 bg-white border-y border-gray-200/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-crimson font-bold text-xs uppercase tracking-widest block mb-2">Família, Juventude & Tradição</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-crimson-dark mb-4">
+          Para Jovens, Pais e o Clube de Mães e Amigos
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Na Ordem DeMolay, o desenvolvimento do jovem caminha lado a lado com a participação ativa e transparente de sua família.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div class="bg-cream rounded-2xl p-7 border border-gold/30 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+          <div class="w-12 h-12 rounded-xl bg-crimson text-gold-light flex items-center justify-center mb-5 shadow">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-crimson-dark mb-2">Para Jovens (12 a 21 anos)</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+            Um ambiente de verdadeira irmandade onde o jovem desenvolve <strong>liderança, oratória, gestão de projetos e responsabilidade social</strong>, participando de ações filantrópicas e eventos regionais.
+          </p>
+          <div class="pt-3 border-t border-gray-200 text-xs font-semibold text-crimson">
+            • Escudeiros: de 7 a 11 anos (Castelo)
+          </div>
+        </div>
+
+        <div class="relative bg-gradient-to-b from-crimson-dark to-crimson text-white rounded-2xl p-7 border-2 border-gold shadow-xl hover:shadow-2xl transition-all flex flex-col lg:-translate-y-2">
+          <div class="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-gold text-crimson-dark text-[11px] font-extrabold uppercase tracking-wider shadow">
+            Participação da Família
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-gold text-crimson-dark flex items-center justify-center mb-5 shadow-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-gold-light mb-2">Clube de Mães e Amigos</h3>
+          <p class="text-gray-100 text-sm leading-relaxed mb-4 flex-grow">
+            O coração acolhedor de cada Capítulo! Formado por <strong>mães, pais e familiares</strong> que apoiam diretamente os jovens, auxiliam na organização de eventos, lideram campanhas filantrópicas e acompanham de perto toda a jornada da juventude com total transparência.
+          </p>
+          <div class="pt-3 border-t border-gold/30 flex items-center justify-between text-xs font-semibold text-gold-light">
+            <span>• Portas abertas às famílias</span>
+            <a href="#interesse" class="underline hover:text-white">Participar →</a>
+          </div>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-7 border border-gold/30 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+          <div class="w-12 h-12 rounded-xl bg-crimson text-gold-light flex items-center justify-center mb-5 shadow">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-crimson-dark mb-2">Patrocínio Maçônico e Valores</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+            Cada Capítulo é patrocinado e supervisionado por <strong>Lojas Maçônicas regulares</strong>, cultivando o amor filial, reverência pelas coisas sagradas, cortesia, companheirismo, fidelidade, pureza e patriotismo.
+          </p>
+          <div class="pt-3 border-t border-gray-200 text-xs font-semibold text-crimson">
+            • Acompanhamento adulto constante
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SEÇÃO: LINKS OFICIAIS E TRANSPARÊNCIA -->
+  <section id="links-oficiais" class="py-16 sm:py-20 bg-crimson-dark text-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-gold-light font-bold text-xs uppercase tracking-widest block mb-2">Regularidade & Credibilidade</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white mb-3">
+          Links Oficiais e Transparência
+        </h2>
+        <p class="text-gray-300 text-sm sm:text-base">
+          Consulte diretamente o sistema nacional do Supremo Conselho DeMolay Brasil e acompanhe nossos canais oficiais.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Link 1: Busca Oficial SCDB -->
+        <a href="https://www.demolaybrasil.org.br" target="_blank" rel="noopener noreferrer" class="group bg-white/10 hover:bg-white/15 border border-gold/40 rounded-2xl p-6 transition-all flex flex-col justify-between hover:-translate-y-1">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-gold text-crimson-dark flex items-center justify-center mb-4 font-bold">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-gold-light mb-2 group-hover:underline">Busca Oficial de Capítulos (Portal SCDB)</h3>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Verifique a regularidade dos Capítulos da Paraíba e de todo o Brasil diretamente no portal do Supremo Conselho.
+            </p>
+          </div>
+          <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-light">
+            <span>Acessar demolaybrasil.org.br</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Link 2: GCE-PB -->
+        <a href="https://www.instagram.com/demolayparaiba?dlrf=MTZzamg4OXphd296bQ==" target="_blank" rel="noopener noreferrer" class="group bg-white/10 hover:bg-white/15 border border-white/20 hover:border-gold/40 rounded-2xl p-6 transition-all flex flex-col justify-between hover:-translate-y-1">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-white/15 text-gold-light flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-white mb-2 group-hover:text-gold-light transition-colors">Grande Conselho Estadual (GCE-PB)</h3>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Acompanhe as diretrizes, eventos estaduais e comunicados oficiais da Ordem DeMolay no Estado da Paraíba.
+            </p>
+          </div>
+          <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-200 group-hover:text-gold-light">
+            <span>Seguir @demolayparaiba</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Link 3: Instagram 2ª Região -->
+        <a href="https://www.instagram.com/2regiao.da.paraiba" target="_blank" rel="noopener noreferrer" class="group bg-white/10 hover:bg-white/15 border border-white/20 hover:border-gold/40 rounded-2xl p-6 transition-all flex flex-col justify-between hover:-translate-y-1">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-white/15 text-gold-light flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-white mb-2 group-hover:text-gold-light transition-colors">Instagram Oficial da 2ª Região</h3>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Veja as fotos das cerimônias de posse, ações filantrópicas, calendário regional e conquistas dos nossos Capítulos.
+            </p>
+          </div>
+          <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-200 group-hover:text-gold-light">
+            <span>Abrir @2regiao.da.paraiba</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SEÇÃO: FORMULÁRIO DE INTERESSE / INDICAÇÃO -->
+  <section id="interesse" class="py-16 sm:py-24 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-3xl shadow-xl border border-gold/40 overflow-hidden">
+      <!-- Cabeçalho do Formulário -->
+      <div class="bg-gradient-to-r from-crimson-dark to-crimson px-6 py-8 sm:px-10 text-white">
+        <span class="inline-block px-3 py-1 rounded-full bg-gold/20 text-gold-light text-xs font-bold uppercase tracking-wider mb-2">
+          Recrutamento & Indicação
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white">
+          Formulário de Interesse
+        </h2>
+        <p class="text-gray-200 text-sm mt-1">
+          Se você tem interesse em conhecer a Ordem, é familiar de um jovem ou deseja fazer uma indicação, preencha os dados abaixo.
+        </p>
+      </div>
+
+      <!-- Corpo do Formulário -->
+      <div class="p-6 sm:p-10">
+        <form id="interest-form" class="space-y-5">
+          <!-- Perfil do Interessado -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Quem está preenchendo? *</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <label class="cursor-pointer">
+                <input type="radio" name="role" value="Jovem interessado (12 a 21 anos)" checked class="peer sr-only">
+                <div class="h-full flex items-center justify-center text-center py-3 px-3 rounded-xl border border-gray-300 text-xs sm:text-sm font-medium peer-checked:bg-crimson peer-checked:text-white peer-checked:border-crimson transition-all">
+                  Jovem interessado (12 a 21 anos)
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="role" value="Pai / Mãe / Responsável (Clube de Mães)" class="peer sr-only">
+                <div class="h-full flex items-center justify-center text-center py-3 px-3 rounded-xl border border-gray-300 text-xs sm:text-sm font-medium peer-checked:bg-crimson peer-checked:text-white peer-checked:border-crimson transition-all">
+                  Pai / Mãe / Responsável (ou Clube de Mães)
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="role" value="Tio Maçom / Indicação" class="peer sr-only">
+                <div class="h-full flex items-center justify-center text-center py-3 px-3 rounded-xl border border-gray-300 text-xs sm:text-sm font-medium peer-checked:bg-crimson peer-checked:text-white peer-checked:border-crimson transition-all">
+                  Tio Maçom / Indicação
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Nome Completo -->
+          <div>
+            <label for="name" class="block text-sm font-semibold text-charcoal mb-1.5">Nome Completo *</label>
+            <input type="text" id="name" required placeholder="Digite o nome completo" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-crimson focus:border-crimson outline-none transition-all text-sm">
+          </div>
+
+          <!-- Idade e Cidade -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="age" id="age-label" class="block text-sm font-semibold text-charcoal mb-1.5">Idade do Jovem *</label>
+              <input type="number" id="age" min="7" max="99" required placeholder="Ex: 15" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-crimson focus:border-crimson outline-none transition-all text-sm">
+            </div>
+
+            <div>
+              <label for="city" class="block text-sm font-semibold text-charcoal mb-1.5">Cidade na 2ª Região *</label>
+              <select id="city" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-crimson focus:border-crimson outline-none transition-all text-sm bg-white">
+                <option value="" disabled selected>Selecione sua cidade...</option>
+                <option value="Campina Grande">Campina Grande - PB</option>
+                <option value="Areia">Areia - PB</option>
+                <option value="Alagoa Grande">Alagoa Grande - PB</option>
+                <option value="Picuí">Picuí - PB</option>
+                <option value="Outra cidade próxima">Outra cidade da região</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-semibold text-charcoal mb-1.5">Email para Contato *</label>
+            <input type="email" id="email" required placeholder="seuemail@exemplo.com" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-crimson focus:border-crimson outline-none transition-all text-sm">
+          </div>
+
+          <!-- Botão Enviar -->
+          <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-crimson to-crimson-dark hover:from-crimson-light hover:to-crimson text-white font-bold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+            <span>Enviar Solicitação à 2ª Região</span>
+            <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Mensagem de Confirmação Instantânea (Oculta inicialmente) -->
+        <div id="confirmation-box" class="hidden text-center py-6 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-green-100 text-green-700 flex items-center justify-center mx-auto shadow-inner">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-crimson-dark">Confira e envie sua solicitação por email</h3>
+          <p id="confirmation-text" class="text-gray-700 text-sm sm:text-base max-w-lg mx-auto leading-relaxed"></p>
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a id="email-draft-link" href="#" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-crimson text-white font-semibold text-sm hover:bg-crimson-dark transition-colors">
+              Abrir rascunho do email
+            </a>
+            <button type="button" id="reset-form-button" class="w-full sm:w-auto px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold text-sm hover:bg-gray-50 transition-colors">
+              Fazer Nova Indicação
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. RODAPÉ / GESTÃO 2026/2027 -->
+  <footer class="bg-crimson-dark text-gray-300 border-t-4 border-gold">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-8 border-b border-white/15">
+        <!-- Identificação Institucional -->
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-3 h-3 rounded-full bg-gold"></span>
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-gold-light">2ª Região da Paraíba • Ordem DeMolay</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-gray-300 max-w-md leading-relaxed">
+            Jurisdicionada ao Grande Conselho Estadual da Paraíba (GCE-PB) e ao Supremo Conselho DeMolay Brasil (SCDB). Formando líderes e cidadãos íntegros.
+          </p>
+        </div>
+
+        <!-- Liderança Regional Gestão 2026/2027 -->
+        <div class="bg-white/5 border border-gold/25 rounded-2xl p-5">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-gold-light block mb-3">
+            Liderança Regional • Gestão 2026/2027
+          </span>
+          <div class="space-y-2.5 text-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-gray-300">🟢 Mestre Conselheiro Regional:</span>
+              <a href="https://www.instagram.com/joao._pedro.007" target="_blank" rel="noopener noreferrer" class="font-semibold text-white hover:text-gold-light underline decoration-gold/50 transition-colors">
+                @joao._pedro.007
+              </a>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-gray-300">🟣 Oficial Executivo:</span>
+              <a href="https://www.instagram.com/ibrahimsandresgomesalves" target="_blank" rel="noopener noreferrer" class="font-semibold text-white hover:text-gold-light underline decoration-gold/50 transition-colors">
+                @ibrahimsandresgomesalves
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direitos e Links Finais -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <p>© 2026/2027 2ª Região da Paraíba — Todos os direitos reservados.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://www.instagram.com/2regiao.da.paraiba" target="_blank" rel="noopener noreferrer" class="hover:text-gold-light transition-colors">Instagram Regional</a>
+          <span>•</span>
+          <a href="https://www.demolaybrasil.org.br" target="_blank" rel="noopener noreferrer" class="hover:text-gold-light transition-colors">Portal SCDB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

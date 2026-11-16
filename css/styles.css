@@ -1,0 +1,9 @@
+.hero-pattern {
+  background-image: radial-gradient(#D4AF37 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.regional-logo {
+  object-fit: contain;
+  object-position: center;
+}
