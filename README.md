@@ -1,44 +1,29 @@
 # 2ª Região da Paraíba — Ordem DeMolay
 
-Site institucional da 2ª Região da Paraíba, vinculada ao Grande Conselho Estadual da Paraíba (GCE-PB) e ao Supremo Conselho DeMolay Brasil (SCDB). Apresenta as organizações afiliadas, informações institucionais, canais oficiais e um formulário de interesse. O frontend é estático e o envio do formulário usa uma função serverless da Vercel com SMTP.
+Site institucional estático da 2ª Região da Paraíba. Apresenta as organizações afiliadas, informações da Ordem, canais oficiais e um formulário de interesse.
 
-## Como visualizar
+## Publicar na Netlify
 
-Como o formulário chama uma API, use o ambiente de desenvolvimento da Vercel para testar o site completo. Também é necessário configurar as variáveis SMTP antes de enviar indicações.
+O formulário usa Netlify Forms; não precisa de servidor SMTP, API própria ou dependências npm. Para ativar:
 
-Instale as dependências e inicie o ambiente local:
+1. Importe este repositório na Netlify. O arquivo [`netlify.toml`](netlify.toml) define a pasta raiz como publicação.
+2. No painel do site, abra **Forms** e selecione **Enable form detection**.
+3. Faça um deploy depois de ativar a detecção para a Netlify reconhecer o formulário.
+4. Em **Forms → Notifications**, crie uma notificação por email para `segundaregiaoadministrativapb@gmail.com`. Se solicitado, confirme o endereço pelo email enviado pela Netlify.
+5. Envie uma indicação de teste e confira **Forms → Submissions** e a caixa de entrada/spam.
 
-```sh
-npm install
-npx vercel dev
-```
-
-O comando `vercel dev` pode solicitar que você vincule o projeto à sua conta Vercel. Configure os valores de `.env.example` em `.env.local` para desenvolvimento local; nunca compartilhe ou versione as credenciais. Acesse o endereço informado pelo comando.
-
-Tailwind CSS e as fontes do Google Fonts são carregados de serviços externos, então o navegador precisa de internet.
+O formulário só pode ser recebido depois que o site estiver publicado na Netlify com a detecção ativada. Um servidor estático local, como `python -m http.server`, serve a página, mas não processa envios.
 
 ## Estrutura
 
-- [`index.html`](index.html): estrutura e conteúdo das seções da página.
-- [`css/styles.css`](css/styles.css): estilos complementares, incluindo a apresentação da logo.
-- [`js/main.js`](js/main.js): ponto de entrada que inicializa os módulos da página.
-- [`js/components/units.js`](js/components/units.js): cartões das organizações e filtros por cidade.
-- [`js/components/interest-form.js`](js/components/interest-form.js): envio do formulário à API e feedback para a pessoa usuária.
-- [`js/data/regional-units.js`](js/data/regional-units.js): dados das organizações, cidades, endereços de busca no Maps e Instagrams.
-- [`js/tailwind.config.js`](js/tailwind.config.js): tema Tailwind usado pela página.
-- [`api/indication.js`](api/indication.js): valida e envia as indicações por SMTP na Vercel.
-- [`lib/indication.js`](lib/indication.js): validação dos dados e das origens permitidas.
+- [`index.html`](index.html): conteúdo da página e marcação reconhecida pela Netlify Forms.
+- [`css/styles.css`](css/styles.css): estilos complementares e logo.
+- [`js/main.js`](js/main.js): inicialização dos módulos.
+- [`js/components/units.js`](js/components/units.js): cartões das organizações e filtros.
+- [`js/components/interest-form.js`](js/components/interest-form.js): envio AJAX do formulário e mensagens de estado.
+- [`js/data/regional-units.js`](js/data/regional-units.js): dados das organizações, cidades e links.
+- [`js/tailwind.config.js`](js/tailwind.config.js): tema do Tailwind CSS.
 - [`assets/logo-2-regiao.png`](assets/logo-2-regiao.png): logo regional.
-- [`documentacao.md`](documentacao.md): arquitetura, comportamentos e instruções para manutenção.
+- [`documentacao.md`](documentacao.md): arquitetura e instruções detalhadas de configuração.
 
-## Conteúdo atual
-
-O site lista seis organizações em Campina Grande, Areia, Alagoa Grande e Picuí. Os cartões são gerados a partir dos dados em `js/data/regional-units.js`; os botões da página filtram esses cartões por cidade.
-
-O formulário envia os dados para a API e esta encaminha uma mensagem via SMTP para `segundaregiaoadministrativapb@gmail.com`. O envio só é confirmado na página após o servidor SMTP aceitar a mensagem; credenciais e endereço remetente devem ser configurados na Vercel.
-
-Execute os testes de validação com `npm test`.
-
-## Publicação
-
-Publique o repositório na Vercel para disponibilizar tanto o site quanto a rota `/api/indication`. Configure as variáveis de ambiente documentadas em [documentacao.md](documentacao.md) no painel da Vercel. Hospedar apenas os arquivos estáticos não disponibiliza a API de envio.
+Tailwind CSS e as fontes Inter e Cinzel vêm de CDNs e precisam de conexão com a internet. O projeto não requer `npm install` ou etapa de build.

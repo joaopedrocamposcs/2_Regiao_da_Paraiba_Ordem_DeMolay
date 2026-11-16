@@ -2,113 +2,49 @@
 
 ## Visão geral
 
-Este repositório contém um site institucional para a 2ª Região da Paraíba da Ordem DeMolay. O frontend usa HTML, CSS e JavaScript nativos; o formulário é encaminhado pela função serverless em `api/indication.js`, executada na Vercel e conectada a um servidor SMTP.
+Site estático feito com HTML, CSS e JavaScript nativos. Os cartões das organizações são carregados dos dados do projeto e filtrados no navegador. O formulário usa Netlify Forms para registrar indicações e encaminhar notificações por email, sem API própria ou credenciais SMTP no código.
 
-## Executar localmente
+## Publicar e ativar os formulários
 
-O formulário depende da API, então use a Vercel CLI para executar o projeto completo localmente. A abertura de `index.html` por `file://` ou por um servidor estático simples não fornece a rota `/api/indication`.
+1. Importe o repositório na Netlify. [`netlify.toml`](netlify.toml) configura a publicação da pasta raiz, sem comando de build.
+2. No painel do site, abra **Forms** e clique em **Enable form detection**.
+3. Faça um novo deploy. A Netlify analisa o HTML publicado e registra o formulário chamado `interest`.
+4. Abra **Forms → Notifications** e crie uma notificação por email para `segundaregiaoadministrativapb@gmail.com`.
+5. Se o email não pertencer a um membro da equipe Netlify, confirme a autorização pelo link enviado pela Netlify. Enquanto o destinatário estiver pendente, as notificações não serão enviadas.
+6. Envie uma indicação de teste e confira **Forms → Submissions**, a caixa de entrada e a pasta de spam.
 
-Instale as dependências e inicie o servidor local:
+O recebimento e a notificação por email são etapas distintas: o envio pode aparecer em **Submissions**, mas a equipe só recebe email depois que a notificação estiver configurada e o destinatário confirmado. A ativação da detecção e a configuração da notificação precisam ser feitas no painel da conta Netlify; não podem ser habilitadas apenas por código.
 
-```powershell
-npm install
-npx vercel dev
-```
+Um servidor estático local, como `python -m http.server`, não executa o processamento Netlify. Portanto, o formulário não pode ser testado para entrega de email apenas abrindo o site localmente. Faça o teste em um deploy Netlify.
 
-O comando pode solicitar que o projeto seja vinculado a uma conta Vercel. Para testar o envio local, copie `.env.example` para `.env.local` e configure as variáveis com os dados do provedor SMTP. Não compartilhe nem versione `.env.local`. Encerre o servidor com `Ctrl+C`.
-
-Execute `npm test` para verificar a validação de dados e a política de origem. Tailwind CSS e as fontes Inter e Cinzel são obtidos de CDNs e precisam de conexão com a internet.
-
-## Organização dos arquivos
+## Arquivos
 
 | Caminho | Responsabilidade |
 | --- | --- |
-| `index.html` | Conteúdo e estrutura das seções, navegação, filtros e campos do formulário. |
-| `css/styles.css` | Regras CSS complementares para o padrão de fundo e a logo. |
-| `js/main.js` | Inicializa os módulos após o carregamento do DOM. |
-| `js/components/units.js` | Filtra e renderiza os cartões das organizações; cria links de busca do Google Maps. |
-| `js/components/interest-form.js` | Atualiza a obrigatoriedade da idade, envia os dados à API e exibe estados de envio, sucesso ou erro. |
-| `js/data/regional-units.js` | Fonte dos dados exibidos em cada cartão. |
-| `js/tailwind.config.js` | Cores e famílias tipográficas personalizadas do tema Tailwind. |
-| `api/indication.js` | Endpoint Vercel `POST /api/indication`; valida a solicitação e envia o email por SMTP. |
-| `lib/indication.js` | Regras de validação dos dados e das origens permitidas. |
-| `test/indication.test.js` | Testes unitários da validação e da política de origem. |
-| `.env.example` | Modelo das variáveis de configuração; não contém credenciais válidas. |
-| `assets/logo-2-regiao.png` | Imagem da identidade visual usada na navegação e no destaque principal. |
+| `index.html` | Estrutura da página, campos do formulário e atributos Netlify Forms. |
+| `css/styles.css` | Estilos complementares para o fundo e a logo. |
+| `js/main.js` | Inicializa os módulos quando o DOM está carregado. |
+| `js/components/units.js` | Ordena e renderiza cartões, filtros e links do Maps. |
+| `js/components/interest-form.js` | Ajusta o campo de idade e envia os dados codificados por AJAX. |
+| `js/data/regional-units.js` | Dados das organizações afiliadas. |
+| `js/tailwind.config.js` | Cores e fontes do tema Tailwind. |
+| `assets/logo-2-regiao.png` | Logo regional. |
+| `netlify.toml` | Diretório publicado pela Netlify. |
 
-### Inicialização
+Tailwind CSS e as fontes Inter/Cinzel são carregados por CDN, então precisam de internet. Não há dependências npm nem etapa de build.
 
-O HTML carrega `js/main.js` com `type="module"`. O ponto de entrada aguarda `DOMContentLoaded` e então inicializa:
+## Como o formulário funciona
 
-- `initializeUnits()`, que cria os cartões e associa os botões de filtro;
-- `initializeInterestForm()`, que prepara os eventos do formulário.
+O formulário HTML tem `name="interest"`, `method="POST"` e `data-netlify="true"`. Durante o deploy, a Netlify detecta a marcação e injeta o campo oculto `form-name`. O JavaScript também o acrescenta caso esteja ausente e converte `FormData` para `application/x-www-form-urlencoded`, formato exigido pelo processamento AJAX da Netlify Forms.
 
-## Seções da página
+Os dados incluem nome, email, perfil, idade, cidade e autorização. A idade é obrigatória para o perfil de jovem e opcional para os demais. Um campo honeypot ajuda a filtrar robôs. O aviso de autorização informa que a Netlify processará os dados e que, para menores, o responsável deve preencher ou autorizar o envio.
 
-1. **Navegação e destaque:** identidade regional, gestão 2026/2027 e acesso ao formulário e ao portal nacional.
-2. **Capítulos e organizações afiliadas:** cartões gerados a partir dos dados e filtros por cidade.
-3. **Sobre a Ordem:** informações para jovens, famílias e o Clube de Mães e Amigos.
-4. **Links oficiais:** portal do SCDB, perfil estadual e Instagram regional.
-5. **Formulário de interesse:** dados de contato, cidade e perfil da pessoa interessada.
-6. **Rodapé:** vínculo institucional, liderança regional e links finais.
+As submissões ficam disponíveis no painel Netlify. O email de notificação é definido separadamente em **Forms → Notifications**; não há senha SMTP, API key ou email destinatário embutido no JavaScript.
 
-## Dados das organizações
+## Manutenção
 
-Os cartões usam os objetos exportados por `regionalUnits` em `js/data/regional-units.js`. Cada organização pode ter os seguintes campos:
-
-- `name`: nome e número da organização;
-- `type`: categoria exibida no cartão;
-- `ageGroup`: faixa etária apresentada;
-- `city` e `state`: usados para filtragem e localização textual;
-- `regionLabel` (opcional): rótulo alternativo de localização;
-- `badgeColor`: classes Tailwind para a etiqueta de categoria;
-- `description`: texto descritivo;
-- `mapsLocation`: texto usado como consulta na busca do Google Maps;
-- `instaUrl`: endereço externo do Instagram.
-
-Para incluir ou atualizar uma organização, edite o array em `js/data/regional-units.js`. Use o mesmo nome de cidade em `city` e no atributo `data-city` do botão correspondente em `index.html`; os filtros comparam esses valores literalmente. Se for adicionada uma cidade, atualize também as opções de cidade do formulário em `index.html`, quando aplicável.
-
-O link do Maps é uma pesquisa criada com `mapsLocation`, não uma coordenada ou um pin verificado. Confira o resultado no Google Maps ao alterar endereços.
-
-## Formulário e envio de email
-
-O formulário coleta nome, perfil, idade (obrigatória para o perfil de jovem e opcional para os demais), cidade e email de contato. Exige autorização para encaminhar esses dados e orienta que um responsável preencha ou autorize o envio quando se tratar de um menor. O navegador envia uma requisição `POST` JSON à rota `/api/indication`.
-
-O endpoint valida a origem da requisição, os campos e a autorização. Em seguida, envia o email com Nodemailer e aguarda a resposta do servidor SMTP antes de retornar sucesso. A aplicação não persiste os dados em banco nem registra o conteúdo do formulário nos logs.
-
-### Configuração SMTP na Vercel
-
-Configure estas variáveis no painel do projeto Vercel, para os ambientes que serão usados, e faça um novo deploy após alterá-las:
-
-| Variável | Descrição |
-| --- | --- |
-| `SITE_URL` | Origem pública oficial do site, por exemplo `https://seu-dominio.vercel.app`, sem caminho. |
-| `SMTP_HOST` | Host SMTP indicado pelo provedor de email. |
-| `SMTP_PORT` | Use `465` (TLS implícito) ou `587` (STARTTLS). A porta `25` não é aceita. |
-| `SMTP_USER` | Usuário SMTP. |
-| `SMTP_PASS` | Senha SMTP ou senha de aplicativo fornecida pelo provedor. |
-| `MAIL_FROM` | Endereço autenticado ou autorizado pelo provedor para envio. |
-| `MAIL_TO` | Caixa que receberá as indicações; por padrão, `segundaregiaoadministrativapb@gmail.com`. |
-
-O arquivo `.env.example` lista os nomes das variáveis. Para desenvolvimento local, copie-o para `.env.local`, substitua os exemplos por valores reais e execute `npx vercel dev`. Não coloque senhas no código, no Git ou em mensagens de chat. Se usar Gmail/Google Workspace, configure a autenticação SMTP apropriada (por exemplo, uma senha de app quando exigida) e use um remetente permitido pela conta.
-
-`SITE_URL` protege o endpoint contra chamadas iniciadas de outros sites. Domínios de preview da Vercel também são aceitos pelo ambiente Vercel. Para domínios próprios, configure o endereço exato em `SITE_URL`.
-
-### Confirmação e diagnóstico
-
-A página informa sucesso somente depois que o servidor SMTP aceita a mensagem. Isso não garante que ela chegou à caixa de entrada: filtros de spam, rejeições posteriores, configuração SPF/DKIM/DMARC ou regras do provedor podem afetar a entrega. Confira também spam e quarentena. A função aguarda `sendMail` dentro da requisição; em caso de falha, retorna erro para a interface em vez de exibir uma confirmação falsa.
-
-Se o envio falhar, confira:
-
-1. As variáveis SMTP estão preenchidas no ambiente Vercel correto e o projeto foi redeployado.
-2. Host, usuário e senha estão corretos; a porta corresponde à configuração do provedor (`465` ou `587`).
-3. `MAIL_FROM` é permitido pelo provedor e `MAIL_TO` está correto.
-4. Os logs da função `api/indication` na Vercel mostram um código de erro SMTP; a aplicação não registra o corpo nem os dados pessoais submetidos.
-
-## Manutenção e publicação
-
-- Mantenha os caminhos relativos entre HTML, módulos, CSS e imagens ao publicar.
-- Publique na Vercel para que o site e a rota de API estejam disponíveis no mesmo domínio, com HTTPS.
-- Os links para Maps e serviços sociais dependem dos serviços externos correspondentes.
-- Após alterar cidades ou dados de organizações, confira os filtros, os cartões e cada link externo no navegador.
-- A logo é usada em dois pontos de `index.html`; mantenha o caminho do arquivo atualizado caso a imagem seja substituída.
+- Ao adicionar um campo, inclua um atributo `name` e mantenha o formulário detectável no HTML estático para que a Netlify o indexe durante o deploy.
+- Se alterar o `name` do formulário, mantenha coerentes o nome usado pela página e o valor enviado como `form-name`.
+- Depois de alterar os campos ou a marcação do formulário, faça deploy e confirme que ele aparece em **Forms**.
+- Para mudar o destinatário, edite a notificação no painel e conclua a confirmação de endereço exigida pela Netlify.
+- Para atualizar uma organização, edite `js/data/regional-units.js`; nomes de cidade precisam corresponder aos filtros em `index.html`.

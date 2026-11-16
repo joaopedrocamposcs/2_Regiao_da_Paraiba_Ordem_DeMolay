@@ -16,7 +16,6 @@ async function handleFormSubmit(event) {
   const status = document.getElementById('form-status');
   const submitButton = form.querySelector('button[type="submit"]');
   const submitLabel = document.getElementById('submit-label');
-  const role = document.querySelector('input[name="role"]:checked').value;
 
   status.textContent = 'Enviando solicitação...';
   status.classList.remove('hidden');
@@ -24,31 +23,32 @@ async function handleFormSubmit(event) {
   submitLabel.textContent = 'Enviando...';
 
   try {
-    const response = await fetch('/api/indication', {
+    const formData = new FormData(form);
+    if (!formData.has('form-name')) {
+      formData.set('form-name', form.getAttribute('name'));
+    }
+
+    const response = await fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: document.getElementById('name').value,
-        age: document.getElementById('age').value,
-        city: document.getElementById('city').value,
-        email: document.getElementById('email').value,
-        role,
-        consent: document.getElementById('consent').checked,
-        website: document.getElementById('website').value,
-      }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
     });
-    const result = await response.json().catch(() => ({}));
 
     if (!response.ok) {
-      throw new Error(result.message || 'Não foi possível enviar. Tente novamente mais tarde.');
+      if ([404, 405, 501].includes(response.status)) {
+        throw new Error('O formulário só recebe indicações depois de publicado na Netlify com a detecção de formulários ativada.');
+      }
+      throw new Error('A Netlify não aceitou o envio. Tente novamente ou use os canais oficiais da 2ª Região.');
     }
 
     form.classList.add('hidden');
     document.getElementById('confirmation-box').classList.remove('hidden');
   } catch (error) {
-    status.textContent = error instanceof Error
-      ? error.message
-      : 'Não foi possível enviar. Tente novamente mais tarde.';
+    status.textContent = error instanceof TypeError
+      ? 'Não foi possível conectar à Netlify. Verifique a conexão e tente novamente.'
+      : error instanceof Error
+        ? error.message
+        : 'Não foi possível enviar. Tente novamente mais tarde.';
   } finally {
     submitButton.disabled = false;
     submitLabel.textContent = 'Enviar Solicitação à 2ª Região';
