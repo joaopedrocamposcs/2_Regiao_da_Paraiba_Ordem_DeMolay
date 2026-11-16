@@ -297,7 +297,8 @@
 
       <!-- Corpo do Formulário -->
       <div class="p-6 sm:p-10">
-        <form id="interest-form" name="interest" method="POST" data-netlify="true" netlify-honeypot="website" class="space-y-5">
+        <form id="interest-form" name="interest" method="POST" action="/" data-netlify="true" netlify-honeypot="website" class="space-y-5">
+          <input type="hidden" name="form-name" value="interest">
           <input type="hidden" name="subject" value="Nova indicação — 2ª Região da Paraíba">
 
           <!-- Perfil do Interessado -->

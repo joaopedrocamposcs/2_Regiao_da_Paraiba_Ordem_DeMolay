@@ -35,7 +35,7 @@ Tailwind CSS e as fontes Inter/Cinzel são carregados por CDN, então precisam d
 
 ## Como o formulário funciona
 
-O formulário HTML tem `name="interest"`, `method="POST"` e `data-netlify="true"`. Durante o deploy, a Netlify detecta a marcação e injeta o campo oculto `form-name`. O JavaScript também o acrescenta caso esteja ausente e converte `FormData` para `application/x-www-form-urlencoded`, formato exigido pelo processamento AJAX da Netlify Forms.
+O formulário HTML tem `name="interest"`, `method="POST"`, `action="/"` e `data-netlify="true"`, além do campo oculto `form-name` explícito. O JavaScript também o acrescenta caso esteja ausente e converte `FormData` para `application/x-www-form-urlencoded`, formato exigido pelo processamento AJAX da Netlify Forms.
 
 Os dados incluem nome, email, perfil, idade, cidade e autorização. A idade é obrigatória para o perfil de jovem e opcional para os demais. Um campo honeypot ajuda a filtrar robôs. O aviso de autorização informa que a Netlify processará os dados e que, para menores, o responsável deve preencher ou autorizar o envio.
 
