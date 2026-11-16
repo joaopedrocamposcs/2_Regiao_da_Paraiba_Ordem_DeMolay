@@ -1,5 +1,3 @@
-const regionalEmail = 'segundaregiaoadministrativapb@gmail.com';
-
 function updateAgeRequirement() {
   const role = document.querySelector('input[name="role"]:checked').value;
   const ageInput = document.getElementById('age');
@@ -11,40 +9,59 @@ function updateAgeRequirement() {
   ageInput.placeholder = isYoung ? 'Ex: 15' : 'Opcional';
 }
 
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault();
 
-  const name = document.getElementById('name').value.trim();
-  const age = document.getElementById('age').value.trim();
-  const city = document.getElementById('city').value;
-  const email = document.getElementById('email').value.trim();
-  const role = document.querySelector('input[name="role"]:checked').value;
   const form = document.getElementById('interest-form');
-  const confirmationBox = document.getElementById('confirmation-box');
-  const confirmationText = document.getElementById('confirmation-text');
-  const emailDraftLink = document.getElementById('email-draft-link');
-  const emailBody = [
-    'Nova solicitação de interesse — 2ª Região da Paraíba',
-    '',
-    `Nome: ${name}`,
-    `Perfil: ${role}`,
-    ...(age ? [`Idade do jovem: ${age} anos`] : []),
-    `Cidade: ${city}`,
-    `Email para contato: ${email}`,
-  ].join('\n');
-  const emailSubject = 'Interesse na 2ª Região da Paraíba — Ordem DeMolay';
+  const status = document.getElementById('form-status');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const submitLabel = document.getElementById('submit-label');
+  const role = document.querySelector('input[name="role"]:checked').value;
 
-  emailDraftLink.href = `mailto:${regionalEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-  confirmationText.textContent = 'Clique no botão abaixo para abrir uma mensagem preenchida no seu aplicativo de email. Revise os dados e confirme o envio.';
+  status.textContent = 'Enviando solicitação...';
+  status.classList.remove('hidden');
+  submitButton.disabled = true;
+  submitLabel.textContent = 'Enviando...';
 
-  form.classList.add('hidden');
-  confirmationBox.classList.remove('hidden');
+  try {
+    const response = await fetch('/api/indication', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        city: document.getElementById('city').value,
+        email: document.getElementById('email').value,
+        role,
+        consent: document.getElementById('consent').checked,
+        website: document.getElementById('website').value,
+      }),
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.message || 'Não foi possível enviar. Tente novamente mais tarde.');
+    }
+
+    form.classList.add('hidden');
+    document.getElementById('confirmation-box').classList.remove('hidden');
+  } catch (error) {
+    status.textContent = error instanceof Error
+      ? error.message
+      : 'Não foi possível enviar. Tente novamente mais tarde.';
+  } finally {
+    submitButton.disabled = false;
+    submitLabel.textContent = 'Enviar Solicitação à 2ª Região';
+  }
 }
 
 function resetForm() {
   const form = document.getElementById('interest-form');
   form.reset();
   updateAgeRequirement();
+  const status = document.getElementById('form-status');
+  status.textContent = '';
+  status.classList.add('hidden');
   document.getElementById('confirmation-box').classList.add('hidden');
   form.classList.remove('hidden');
 }

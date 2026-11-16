@@ -1,0 +1,14 @@
+{
+  "name": "2-regiao-paraiba-demolay",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "nodemailer": "^10.6.0"
+  }
+}

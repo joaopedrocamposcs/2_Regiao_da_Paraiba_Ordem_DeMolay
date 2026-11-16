@@ -1,12 +1,16 @@
 import { regionalUnits } from '../data/regional-units.js';
 
+const sortedRegionalUnits = [...regionalUnits].sort((first, second) =>
+  first.name.localeCompare(second.name, 'pt-BR', { sensitivity: 'base', numeric: true }),
+);
+
 function renderUnits(selectedCity = 'Todos') {
   const grid = document.getElementById('units-grid');
   grid.innerHTML = '';
 
   const filtered = selectedCity === 'Todos'
-    ? regionalUnits
-    : regionalUnits.filter(unit => unit.city === selectedCity);
+    ? sortedRegionalUnits
+    : sortedRegionalUnits.filter(unit => unit.city === selectedCity);
 
   filtered.forEach(unit => {
     const locationDisplay = unit.regionLabel || `${unit.city} - ${unit.state}`;
